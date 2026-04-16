@@ -46,6 +46,14 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.actor }}/k8s-prod-api:latest
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install API dependencies
+        run: pip install -r app/api/requirements.txt
+
       - name: Scan API code with Snyk
         uses: snyk/actions/python@master
         env:
@@ -82,6 +90,14 @@ jobs:
           context: ./app/worker
           push: true
           tags: ghcr.io/${{ github.actor }}/k8s-prod-worker:latest
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install worker dependencies
+        run: pip install -r app/worker/requirements.txt
 
       - name: Scan worker code with Snyk
         uses: snyk/actions/python@master
