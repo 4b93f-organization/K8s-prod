@@ -64,6 +64,19 @@ jobs:
       - name: Build and push worker image
         uses: docker/build-push-action@v6
         with:
-          context: ./app/worker
-          push: true
-          tags: ghcr.io/${{ github.actor }}/k8s-prod-worker:latest
+            context: ./app/worker
+            push: true
+            tags: ghcr.io/${{ github.actor }}/k8s-prod-worker:latest
+  
+  security:
+    name: Snyk Security Scan
+    runs-on: ubuntu-latest
+  
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/python@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
