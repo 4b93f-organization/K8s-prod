@@ -60,7 +60,6 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --severity-threshold=high
-        working-directory: app/api
 
       - name: Scan API image with Snyk
         uses: snyk/actions/docker@master
@@ -106,7 +105,6 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --severity-threshold=high
-        working-directory: app/worker
 
       - name: Scan worker image with Snyk
         uses: snyk/actions/docker@master
