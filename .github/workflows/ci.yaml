@@ -3,9 +3,9 @@ name: CI
 on:
   push:
     branches: [feat/github-actions, main]
-    paths:
-      - "app/api/**"
-      - "app/worker/**"
+    # paths:
+    #   - "app/api/**"
+    #   - "app/worker/**"
 
 jobs:
   changes:
