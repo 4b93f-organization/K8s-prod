@@ -79,6 +79,10 @@ log-processing/
 - **Snyk scanning** — dependency and container image scanning in CI
 - **One-command setup** — `make setup && make monitoring && make infra && make deploy`
 
+## Why LocalStack
+
+LocalStack emulates AWS services (S3, SQS) locally — no AWS account or cost needed. The app code uses the standard boto3 SDK and is unaware it's talking to LocalStack instead of real AWS. Swapping to a real AWS environment requires only changing the endpoint URLs and credentials in `values.yaml`.
+
 ## CI/CD
 
 GitHub Actions on every push to `main` (when `app/` files change):
